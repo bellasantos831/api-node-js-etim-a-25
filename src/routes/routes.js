@@ -2,18 +2,18 @@ const express = require('express');
 const router = express.Router(); 
 
 const LivrariasController = require('../controllers/livrarias'); 
-const LivrariaLivrosController = require('../controllers/LivrariaLivros'); 
+const LivrariaLivrosController = require('../controllers/livrariaLivros'); 
 
 
-router.get('/Livrarias', LivrariasController.listarLivrarias); 
-router.post('/Livrarias', LivrariasController.cadastrarLivrarias); 
-router.patch('/Livrarias', LivrariasController.editarLivrarias); 
-router.delete('/Livrarias', LivrariasController.apagarLivrarias); 
+router.get('/livrarias', LivrariasController.listarLivrarias); 
+router.post('/livrarias', LivrariasController.cadastrarLivrarias); 
+router.patch('/livrarias', LivrariasController.editarLivrarias); 
+router.delete('/livrarias', LivrariasController.apagarLivrarias); 
 
-router.get('/LivrariaLivros', LivrariaLivrosController.listarLivrariaLivros); 
-router.post('/LivrariaLivros', LivrariaLivrosController.cadastrarLivrariaLivros); 
-router.patch('/LivrariaLivros', LivrariaLivrosController.editarLivrariaLivros); 
-router.delete('/LvrariaLivros', LivrariaLivrosController.apagarLivrariaLivros); 
+router.get('/livrariaLivros', LivrariaLivrosController.listarLivrariaLivros); 
+router.post('/livrariaLivros', LivrariaLivrosController.cadastrarLivrariaLivros); 
+router.patch('/livrariaLivros', LivrariaLivrosController.editarLivrariaLivros); 
+router.delete('/livrariaLivros', LivrariaLivrosController.apagarLivrariaLivros); 
 
 
 module.exports = router;
