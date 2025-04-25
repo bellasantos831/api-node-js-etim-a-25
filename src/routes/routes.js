@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router(); 
 
 const LivrariasController = require('../controllers/livrarias'); 
-const LivrariaLivrosController = require('../controllers/livrariaLivros'); 
+const LivrariaLivrosController = require('../controllers/livraria_livros'); 
 
 
 router.get('/livrarias', LivrariasController.listarLivrarias); 
