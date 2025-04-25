@@ -2,11 +2,19 @@ const db = require('../dataBase/connection');
 
 module.exports = {
     async listarLivrarias(request, response) {
+
+        const sql= ` SELECT liv_id,liv_nome,liv_cidade,liv_estado,liv_endereco,liv_telefone,liv_email,liv_foto,liv_perfil,liv_social FROM livrarias;`;
+
+        const [rows] = await db.query(sql);
+    
+        const nRegistros = rows.length;
+
         try {
             return response.status(200).json({
                 sucesso: true, 
-                mensagem: 'Lista de Livrarias', 
-                dados: null
+                mensagem: 'Lista de Livrarias',
+                nRegistros, 
+                dados: rows
             });
         } catch (error) {
             return response.status(500).json({
