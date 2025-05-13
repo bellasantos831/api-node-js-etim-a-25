@@ -112,9 +112,23 @@ module.exports = {
     },
     async apagarLivrariaLivros(request, response) {
         try {
+
+            const { id } = request.params;
+            const sql = `DELETE FROM livrarias_livros WHERE liv_livro_id  = ?`;
+            const values = [ id ];
+            const [ result ] = await db.query(sql, values);
+             
+            if (result.affectedRows === 0 ) {
+      return res.status(404).json({
+        secesso:false,
+        mensagem: `Publicação ${liv_livro_id} não encontrada!`,
+        dados:null
+      });
+            }
+
             return response.status(200).json({
                 sucesso: true,
-                mensagem: 'Exclusão de livros',
+                mensagem: `Publicação ${liv_livro_id}  excluida com sucesso`,
                 dados: null
             });
         } catch (error) {
