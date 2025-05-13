@@ -26,6 +26,36 @@ module.exports = {
     }, 
     async cadastrarLivrariaLivros(request, response) {
         try {
+
+            try {
+
+                const {id_liv, id_livro, nome, cidade, estado, endereco, telefone, email, foto, perfil, social } = request.body;
+     
+                const sql = ` 
+                INSERT INTO LIVRARIAS_LIVROS (liv_id, livro_id, liv_livro_idioma, liv_livro_pag, liv_livro_tipo, liv_livro_preco, liv_livro_obsadicionais)
+VALUES 
+                 (?,?,?,?,?,?,?,?,?,?); 
+                `;
+                const values = [ id, nome, cidade, estado, endereco, telefone, email, foto, perfil, social];
+     
+                const [result] = await db.query(sql, values);
+     
+                const dados = {
+                 id: result.insertId,
+                 id,
+                 nome,
+                 cidade, 
+                 estado, 
+                 endereco, 
+                 telefone, 
+                 email, 
+                 foto, 
+                 perfil, 
+                 social 
+                };
+     
+
+
             return response.status(200).json({
                 sucesso: true, 
                 mensagem: 'Cadastro de livros', 
