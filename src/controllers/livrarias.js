@@ -121,9 +121,23 @@ module.exports = {
     },
     async apagarLivrarias(request, response) {
         try {
+
+            const { id } = request.params;
+            const sql = `DELETE FROM livrarias WHERE liv_id = ?`;
+            const values = [id];
+            const [result] = await db.query(sql, values);
+
+            if (result.affectedRows === 0) {
+                return response.status(404).json({
+                    sucesso: true,
+                    mensagem: `Livraria ${liv_id} não encontrado!`,
+                    dados: null
+                });
+            }
+
             return response.status(200).json({
                 sucesso: true,
-                mensagem: 'Exclusão de Livraria',
+                mensagem: `Livraria ${id} excluído com sucesso `,
                 dados: null
             });
         } catch (error) {

@@ -119,16 +119,16 @@ module.exports = {
             const [ result ] = await db.query(sql, values);
              
             if (result.affectedRows === 0 ) {
-      return res.status(404).json({
-        secesso:false,
-        mensagem: `Publicação ${liv_livro_id} não encontrada!`,
+      return response.status(404).json({
+        sucesso:false,
+        mensagem: `Publicação ${id} não encontrada!`,
         dados:null
       });
             }
 
             return response.status(200).json({
                 sucesso: true,
-                mensagem: `Publicação ${liv_livro_id}  excluida com sucesso`,
+                mensagem: `Publicação ${id}  excluida com sucesso`,
                 dados: null
             });
         } catch (error) {

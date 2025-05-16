@@ -8,12 +8,12 @@ const LivrariaLivrosController = require('../controllers/livraria_livros');
 router.get('/livrarias', LivrariasController.listarLivrarias); 
 router.post('/livrarias', LivrariasController.cadastrarLivrarias); 
 router.patch('/livrarias/:id', LivrariasController.editarLivrarias); 
-router.delete('/livrarias', LivrariasController.apagarLivrarias); 
+router.delete('/livrarias/:id', LivrariasController.apagarLivrarias); 
 
 router.get('/livrariaLivros', LivrariaLivrosController.listarLivrariaLivros); 
 router.post('/livrariaLivros', LivrariaLivrosController.cadastrarLivrariaLivros); 
 router.patch('/livrariaLivros/:id', LivrariaLivrosController.editarLivrariaLivros); 
-router.delete('/livrariaLivros', LivrariaLivrosController.apagarLivrariaLivros); 
+router.delete('/livrariaLivros/:id', LivrariaLivrosController.apagarLivrariaLivros); 
 
 
 module.exports = router;
