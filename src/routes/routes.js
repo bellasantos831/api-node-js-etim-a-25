@@ -14,6 +14,6 @@ router.get('/livrariaLivros', LivrariaLivrosController.listarLivrariaLivros);
 router.post('/livrariaLivros', LivrariaLivrosController.cadastrarLivrariaLivros); 
 router.patch('/livrariaLivros/:id', LivrariaLivrosController.editarLivrariaLivros); 
 router.delete('/livrariaLivros/:id', LivrariaLivrosController.apagarLivrariaLivros); 
-
+router.delete('/livrariaLivros/del/:id', LivrariaLivrosController.ocultarLivrariaLivros); 
 
 module.exports = router;

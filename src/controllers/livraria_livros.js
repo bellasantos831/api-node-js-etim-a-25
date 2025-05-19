@@ -142,12 +142,39 @@ module.exports = {
     async ocultarLivrariaLivros (request, response) {
         try{
 
-            const ativo = false;
+            const ativo = 0;
             const { id } = request.params;
             const sql = `
-            UPDATE livraria_livros SET 
-               liv_livro_status 
-            `
+            UPDATE livrarias_livros SET 
+               liv_livro_status = ? 
+              WHERE
+               liv_id = ?; 
+            `;
+
+            const values= [ativo, id];
+            const [result]= await db. query(sql,values);
+
+            if (result.affectedRows === 0) {
+                return response.status(404).json({
+                    sucesso: false,
+                    mensagem: `Livraria ${id} não encontrado!`,
+                    dados: null
+                });
+            }
+            
+                return response.status(200).json({
+                    sucesso: true,
+                    mensagem: `Livraria ${id} excluido com sucesso!`,
+                    dados: null
+                });
+
+        }       catch (error) {
+            return response.status(500).json({
+                sucesso: false,
+                mensagem: 'Erro na requisição.',
+                dados: error.message
+            });
         }
     }
+
 };
