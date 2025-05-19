@@ -138,5 +138,16 @@ module.exports = {
                 dados: error.message
             });
         }
+    },
+    async ocultarLivrariaLivros (request, response) {
+        try{
+
+            const ativo = false;
+            const { id } = request.params;
+            const sql = `
+            UPDATE livraria_livros SET 
+               liv_livro_status 
+            `
+        }
     }
 };
