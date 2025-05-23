@@ -139,36 +139,35 @@ module.exports = {
             });
         }
     },
-    async ocultarLivrariaLivros (request, response) {
-        try{
-
-            const ativo = 0;
+    async ocultarLivrariaLivros(request, response) {
+        try {
+            const inativo = 0;
             const { id } = request.params;
+    
             const sql = `
-            UPDATE livrarias_livros SET 
-               liv_livro_status = ? 
-              WHERE
-               liv_id = ?; 
+                UPDATE livrarias_livros SET 
+                    liv_livro_status = ? 
+                WHERE 
+                    liv_livro_id = ?;
             `;
-
-            const values= [ativo, id];
-            const [result]= await db. query(sql,values);
-
+    
+            const values = [inativo, id];
+            const [result] = await db.query(sql, values);
+    
             if (result.affectedRows === 0) {
                 return response.status(404).json({
                     sucesso: false,
-                    mensagem: `Livraria ${id} não encontrado!`,
+                    mensagem: `Publicação ${id} não encontrada.`,
                     dados: null
                 });
             }
-            
-                return response.status(200).json({
-                    sucesso: true,
-                    mensagem: `Livraria ${id} excluido com sucesso!`,
-                    dados: null
-                });
-
-        }       catch (error) {
+    
+            return response.status(200).json({
+                sucesso: true,
+                mensagem: `Publicação ${id} ocultada com sucesso.`,
+                dados: null
+            });
+        } catch (error) {
             return response.status(500).json({
                 sucesso: false,
                 mensagem: 'Erro na requisição.',
